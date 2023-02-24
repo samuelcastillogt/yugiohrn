@@ -26,7 +26,8 @@
         "backgroundColor": "#FFFFFF"
       }, 
       "config":{
-        "googleMobileAdsAppId": "ca-app-pub-5314398130823639/1953659042"
+        "googleMobileAdsAppId": "ca-app-pub-5314398130823639/1953659042",
+        "usesCleartextTraffic":"true"
       }
     },
     "web": {

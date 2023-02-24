@@ -28,7 +28,7 @@ export default function App() {
   return (
       <NavigationContainer>
     <Tab.Navigator >
-        <Tab.Screen name="Hom" component={Home} options={{headerShown: false}}/>
+        <Tab.Screen name="Inicio" component={Home} options={{headerShown: false}}/>
         <Tab.Screen name="Settings" component={Post} />
       </Tab.Navigator>
   </NavigationContainer>
