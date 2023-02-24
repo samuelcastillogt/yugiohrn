@@ -1,26 +1,35 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios"
-import { View, Text, Button  } from "react-native";
-import CardMenu from "../components/CardMenu";
-import { Entypo } from '@expo/vector-icons'; 
-import { Link } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { View, Text, Button, ScrollView  } from "react-native";
+import BusinessCard from "../components/BusinessCard";
 const ListBusiness = ({navigation, route}) => {
+    const [state, setState] = useState()
     const getData = async()=>{
         try{
-           const response = await axios.get("http://192.168.0.17:5000")
-            console.log(response.data)  
+           const response = await axios.get("http://192.168.0.17:5000/categorie/"+ route.params.categorie)
+            setState(response.data)  
         }catch(err){console.log(err)}
        
     }
     useEffect(()=>{
         getData()
     }, [])
-    return (
-        <View>
-            <Text>Este es el {route.params.categorie}</Text>
-        </View>
+    if(!state){
+        <Text>Cargando</Text>
+    }else{
+        return (
+        <ScrollView>
+            {state.map((item)=> <BusinessCard 
+                img={item.data.imagen}
+                title={item.data.nombre}
+                navigation = {navigation}
+                id={item.id} 
+            />)}
+            
+        </ScrollView>
     );
+    }
+    
 };
 
 export default ListBusiness;

@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Home from './pages/Home';
 import Post from "./pages/Post"
+import Configuracion from './pages/Configuracion';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeMenu from './pages/HomeMenu';
@@ -13,7 +14,7 @@ import ListBusiness from './pages/ListBusiness';
 //   AdMobRewarded,
 //   setTestDeviceIDAsync,
 // } from 'expo-ads-admob';
-import { Entypo } from '@expo/vector-icons'; 
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons'; 
 const Stack = createNativeStackNavigator();
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const Tab = createBottomTabNavigator();
@@ -28,8 +29,9 @@ export default function App() {
   return (
       <NavigationContainer>
     <Tab.Navigator >
-        <Tab.Screen name="Inicio" component={Home} options={{headerShown: false}}/>
-        <Tab.Screen name="Settings" component={Post} />
+        <Tab.Screen name="Negocios" component={Home} options={{headerShown: false, tabBarIcon: ()=> <Ionicons name="ios-business-sharp" size={24} color="black" /> }}/>
+        <Tab.Screen name="Publicaciones" component={Post} options={{headerShown: false,tabBarIcon: ()=> <MaterialCommunityIcons name="post-outline" size={24} color="black" /> }}/>
+        <Tab.Screen name="Configuracion" component={Configuracion} options={{tabBarIcon: ()=> <Ionicons name="settings-outline" size={24} color="black" /> }}/>
       </Tab.Navigator>
   </NavigationContainer>
     

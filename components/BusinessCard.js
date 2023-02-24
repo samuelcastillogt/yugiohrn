@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View, Image, Dimensions, TouchableWithoutFeedback } from 'react-native';
 const dimensions = Dimensions.get('window');
 const CardMenu = (props) => {
-    const {img, title, navigation, categorie} = props
+    const {img, title, navigation, id} = props
     console.log(props)
     return (
-        <TouchableWithoutFeedback style={style.container} onPress={() => navigation.navigate('Negocios', {categorie: categorie})}>
+        <TouchableWithoutFeedback style={style.container} onPress={() => navigation.navigate('Detalles', {id: id})}>
             <View>
                 <Image source={{uri:img}} style={style.image}/>
             <Text style={style.title}>{title}</Text>

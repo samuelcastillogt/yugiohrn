@@ -8,6 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import ListBusiness from "./ListBusiness";
 import HomeMenu from "./HomeMenu";
 import Post from "./Post";
+import BusinessPage from "./BusinessPage";
 const Stack = createStackNavigator();
 const Home = () => {
 
@@ -15,7 +16,8 @@ const Home = () => {
            <NavigationContainer independent={true} initialRouteName="Home">
               <Stack.Navigator>
                 <Stack.Screen name="Home" component={HomeMenu} options={{headerShown: false}}/>
-                <Stack.Screen name="business" component={ListBusiness} />
+                <Stack.Screen name="Negocios" component={ListBusiness} />
+                <Stack.Screen name="Detalles" component={BusinessPage} />
               </Stack.Navigator>
            </NavigationContainer>
           
