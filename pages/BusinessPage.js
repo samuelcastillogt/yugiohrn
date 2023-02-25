@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { View, Text } from 'react-native';
 import axios  from 'axios';
+import Loader from '../components/Loader';
 const BusinessPage = ({navigation, route}) => {
     console.log(route.params.id)
     const [state, setState] = useState()
@@ -15,7 +16,7 @@ const BusinessPage = ({navigation, route}) => {
         getData()
     }, [])
     if(!state){
-        return <Text>Cargando</Text>
+        return <Loader />
     }
     return (
         <View>

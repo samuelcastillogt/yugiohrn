@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios"
 import { View, Text, Button, ScrollView  } from "react-native";
 import BusinessCard from "../components/BusinessCard";
+import Loader from "../components/Loader";
 const ListBusiness = ({navigation, route}) => {
     const [state, setState] = useState()
     const getData = async()=>{
@@ -15,7 +16,7 @@ const ListBusiness = ({navigation, route}) => {
         getData()
     }, [])
     if(!state){
-        <Text>Cargando</Text>
+        <Loader />
     }else{
         return (
         <ScrollView>
