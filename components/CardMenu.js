@@ -2,7 +2,6 @@ import { StyleSheet, Text, View, Image, Dimensions, TouchableWithoutFeedback } f
 const dimensions = Dimensions.get('window');
 const CardMenu = (props) => {
     const {img, title, navigation, categorie} = props
-    console.log(props)
     return (
         <TouchableWithoutFeedback style={style.container} onPress={() => navigation.navigate('Negocios', {categorie: categorie})}>
             <View>

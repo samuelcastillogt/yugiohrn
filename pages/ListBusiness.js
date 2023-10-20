@@ -7,7 +7,7 @@ const ListBusiness = ({navigation, route}) => {
     const [state, setState] = useState()
     const getData = async()=>{
         try{
-           const response = await axios.get("http://192.168.0.17:5000/categorie/"+ route.params.categorie)
+           const response = await axios.get("http://192.168.0.15:5000/type/" + route.params.categorie)
             setState(response.data)  
         }catch(err){console.log(err)}
        
@@ -19,15 +19,19 @@ const ListBusiness = ({navigation, route}) => {
         <Loader />
     }else{
         return (
-        <ScrollView>
+            <View>
+              <ScrollView>
             {state.map((item)=> <BusinessCard 
-                img={item.data.imagen}
-                title={item.data.nombre}
+                img={item.card_images[0].image_url_cropped}
+                title={item.name}
                 navigation = {navigation}
                 id={item.id} 
+                key={item.id}
             />)}
-            
-        </ScrollView>
+
+        </ScrollView>  
+            </View>
+        
     );
     }
     

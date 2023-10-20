@@ -29,8 +29,8 @@ export default function App() {
   return (
       <NavigationContainer>
     <Tab.Navigator >
-        <Tab.Screen name="Negocios" component={Home} options={{headerShown: false, tabBarIcon: ()=> <Ionicons name="ios-business-sharp" size={24} color="black" /> }}/>
-        <Tab.Screen name="Publicaciones" component={Post} options={{headerShown: false,tabBarIcon: ()=> <MaterialCommunityIcons name="post-outline" size={24} color="black" /> }}/>
+        <Tab.Screen name="Search a Card" component={Home} options={{headerShown: false, tabBarIcon: ()=> <Ionicons name="ios-business-sharp" size={24} color="black" /> }}/>
+        <Tab.Screen name="Search" component={Post} options={{headerShown: false,tabBarIcon: ()=> <MaterialCommunityIcons name="post-outline" size={24} color="black" /> }}/>
         <Tab.Screen name="Configuracion" component={Configuracion} options={{tabBarIcon: ()=> <Ionicons name="settings-outline" size={24} color="black" /> }}/>
       </Tab.Navigator>
   </NavigationContainer>
