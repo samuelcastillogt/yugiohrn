@@ -1,23 +1,27 @@
 import React, {useRef, useState} from "react";
-import { View, Text, Button, SafeAreaView, ScrollView, StyleSheet, TextInput  } from "react-native";
+import { View, Text, Button, SafeAreaView, ScrollView, StyleSheet, TextInput, Dimensions  } from "react-native";
 import CardData from "../components/CardData";
 import getData from "../services/cardConsult";
 const HomeMenu = ({ navigation }) => {
     const [idCard, setIdCard] = useState()
-    const [card, setCard] = useState()
+    const [card, setCard] = useState([])
     const getCardData = async()=>{
         const response = await getData(idCard)
         setCard(response)
     }
     return (
     <View style={style.main}>
-        <View style={style.container}>
-            <Text>Este es el Texto</Text>
+        {
+           card.length == 0  &&  <View style={style.container}>
+            <Text style={style.title}>Este es el Texto</Text>
             <TextInput style={style.input} placeholder="Write the number card" onChangeText={(e)=> setIdCard(e)} blurOnSubmit/>
             <Button title="Search" color="#580069" style={style.button} disabled={idCard && idCard.length >= 4 ? false : true } onPress={getCardData}/>
         </View>
+        }
+       
         {
-            card != undefined && card.length > 0 && <CardData data={card[0]} />
+
+             card.length > 0 && <ScrollView style={style.scrollContainer}><CardData data={card[0]} setCard={setCard}/></ScrollView> 
         }
         
     </View>
@@ -31,14 +35,20 @@ const style = StyleSheet.create({
         fontSize: 25,
         color: "white",
         fontWeight: "bold",
-        position: "absolute",
-        bottom: 3,
-        padding: 10
+        padding: 10,
+        textAlign: "left"
+
+    },
+    scrollContainer:{
+        width: Dimensions.get("window").width,
 
     },
     main: {
-        backgroundColor: "#003287",
-        height: "100%"
+        backgroundColor: "#483285",
+        height: "100%",
+        color: "white",
+        display: "flex",
+        alignItems: "center",
     },
     input: {
         backgroundColor: "white",
@@ -56,9 +66,14 @@ const style = StyleSheet.create({
     },
     container:{
         width: 350,
+        height:300,
+        color: "white",
         display: "flex",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        backgroundColor: "#24274f",
+        margin: 0,
+        borderRadius: 10
 
     }
 })
